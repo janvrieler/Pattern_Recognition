@@ -23,11 +23,20 @@ for(i in (1:length(dat.sum.sample))){
   }
 }
 
-#1st Qu. = 0 per pixel
-useless.25 <- c()
+##################### PRINT IMAGE VECTOR ##############################
+rotate <- function(x) {
+  t(apply(x, 2, rev))
+}
 
-for(i in (1:length(dat.sum.sample))){
-  if(dat.sum.sample[2,i] <= 0) {
-    useless.25 <- c(useless.25, i)
+visualise_img <- function(mnist_obs) {
+  image_res <- matrix(nrow = 28, ncol = 28)
+  img_vec <- mnist_obs
+  counter <- 1
+  for(i in 1:nrow(image_res)) {
+    for(j in 1:ncol(image_res)) {
+      image_res[i,j] <- as.integer(img_vec[,counter])
+      counter <- counter + 1
+    }
   }
+  image(rotate(image_res), col = grey.colors(255, start = 1, end = 0))
 }
