@@ -5,6 +5,14 @@ set.seed(123)
 sample.ind <- sample(1:nrow(mnist), size = 100)
 sampled.mnist <- mnist[sample.ind,]
 
+converted.sample <- sampled.mnist
+# i in 1:100, in which 100 is the sample size
+for(i in 1:100) {
+  converted.sample[i,] <- zero_ones_conversion(sampled.mnist[i,], 150)
+  print(as.character(i))
+}
+######################## SUMMARY INFO ###########################
+
 summary.sample <- sapply(sampled.mnist[2:length(sampled.mnist)], quantile, prob = c(0, .25, .5, .75, 1), names = FALSE)
 rownames(summary.sample) <- c("Min.", "1st Qu.", "Median", "3rd Qu.", "Max.")
 
@@ -74,8 +82,8 @@ zero_ones_conversion <- function(mnist_obs, min_pixel_val) {
   #print("Class of mnist_obs: " + as.character(class(mnist_obs)))
   #print("Class of mnist_features: " + as.character(class(mnist_features)))
   result <- cbind(mnist_obs[,1],mnist_features)
-  print(class(result))
+  #print(class(result))
   
   #visualise the converted image
-  visualise_img(result, 1)
+  #visualise_img(result, 1)
 }
