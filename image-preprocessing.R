@@ -29,7 +29,7 @@ rotate <- function(x) {
   t(apply(x, 2, rev))
 }
 
-visualise_img <- function(mnist_obs) {
+visualise_img <- function(mnist_obs, n.greycolors) {
   image_res <- matrix(nrow = 28, ncol = 28)
   img_vec <- mnist_obs[2:length(mnist_obs)]
   counter <- 1
@@ -67,7 +67,7 @@ zero_ones_conversion <- function(mnist_obs, min_pixel_val) {
     if(mnist_features[,i] < min_pixel_val) {
       mnist_features[,i] <- 0
     } else {
-      mnist_features[,i] <- 255
+      mnist_features[,i] <- 1
     }
   }
   #concatenating label and new values
@@ -75,5 +75,7 @@ zero_ones_conversion <- function(mnist_obs, min_pixel_val) {
   #print("Class of mnist_features: " + as.character(class(mnist_features)))
   result <- cbind(mnist_obs[,1],mnist_features)
   print(class(result))
-  visualise_img(result)
+  
+  #visualise the converted image
+  visualise_img(result, 1)
 }
