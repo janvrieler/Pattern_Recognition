@@ -1,5 +1,5 @@
 library(readr)
-mnist <- read_csv("C:/Users/Rens/Downloads/mnist.csv")
+#mnist <- read_csv("C:/Users/Rens/Downloads/mnist.csv")
 
 set.seed(123)
 sample.ind <- sample(1:nrow(mnist), size = 100)

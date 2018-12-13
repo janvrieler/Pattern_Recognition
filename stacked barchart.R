@@ -26,3 +26,5 @@ stacked_barchart <- function(confmat) {
   print(chart)
   
 }
+
+chart <- ggplot() + geom_bar(aes( y = 1, x = mnist.multinom.pred , fill = class_labels)chart,data = mnist, stat = "identity") + ggtitle("classifier with density")+xlab("class") + ylab("# classications") + labs(fill = "correctness") + scale_x_discrete(drop = FALSE)
