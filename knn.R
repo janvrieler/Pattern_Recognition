@@ -19,9 +19,9 @@ test.labels <- mnist.train$label
 levels(test.labels) <- unique(test.labels)
 levels(test.labels) <- make.names(levels(test.labels))
 
-controlParameters <- trainControl(method = "cv", number = 5, savePredictions = TRUE, classProbs = TRUE)
+controlParameters <- trainControl(method = "cv", number = 3, savePredictions = TRUE, classProbs = TRUE, verboseIter = TRUE)
 
 
-#tunelength = 4 to test on 4 different k-values and pick the highest accuracy
-my_knn <- train(mnist.train[,2:785], test.labels, method = "knn", data = mnist.train, trControl = controlParameters, tunelength = 4)
+#tunelength = 3 to test on 4 different k-values and pick the highest accuracy
+my_knn <- train(mnist.train[,2:785], test.labels, method = "knn", data = mnist.train, trControl = controlParameters, tunelength = 3)
 print(my_knn)
