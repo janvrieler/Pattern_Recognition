@@ -23,5 +23,7 @@ controlParameters <- trainControl(method = "cv", number = 3, savePredictions = T
 
 
 #tunelength = 3 to test on 4 different k-values and pick the highest accuracy
-my_knn <- train(mnist.train[,2:length(mnist.train)], test.labels, method = "knn", data = mnist.train, trControl = controlParameters, tunelength = 1)
+#my_knn <- train(mnist.train$label ~ ., method = "knn", data = mnist.train, tunelength = 1)
+my_knn <- knn(train = mnist.train[,2:197], test = mnist.test[,1], cl = as.factor(mnist.train[,1]))
+
 print(my_knn)
