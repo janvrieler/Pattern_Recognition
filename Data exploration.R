@@ -1,8 +1,8 @@
 sparse.pixels = c()
 
-for (i in c(1:length(mnist.features))){
-  if (sum(mnist.features[,i]) < 1000) {
-    sparse.pixels <- c(sparse.pixels, i)
+for (i in c(2:length(cropped.mnist[1:197]))){
+  if (sum(cropped.mnist[,i]) < 5000) {
+    sparse.pixels <- c(cropped.mnist, i)
   }
-  print (sum(mnist.features[,i]))
+  print (sum(mnist.cropped[,i]))
 }
