@@ -1,6 +1,6 @@
 class_labels <- c()
-for (i in c(1:42000)) {
-  if (mnist.multinom.pred[i] == class.factor[i]) {
+for (i in c(1:35995)) {
+  if (mnist.logreg.pred[i] == mnist.test$label[i]) {
     class_labels <- c(class_labels, "correct")
   }
   else {
